@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :sessions, only: %i(new create destroy)
   resources :users
   resources :pictures
+  mount LetterOpenerWeb::Engine, at: "/inbox" if Rails.env.development?
 end
