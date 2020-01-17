@@ -1,6 +1,8 @@
 class PicturesController < ApplicationController
+  include PicturesHelper
   before_action :set_picture, only: %i(show edit update destroy)
   before_action :authenticate_user
+  before_action :ensure_correct_user, only: %i(edit update destroy)
 
   def index
     @pictures = Picture.all

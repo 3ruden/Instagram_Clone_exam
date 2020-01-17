@@ -13,4 +13,12 @@ module SessionsHelper
     end
   end
 
+  def forbid_login_user
+    if current_user.present?
+      redirect_to pictures_url, notice: "すでにログインしています"
+    end
+  end
+
+
+
 end
