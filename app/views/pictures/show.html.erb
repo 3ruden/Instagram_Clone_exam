@@ -1,0 +1,18 @@
+<h3><%= notice %></h3>
+
+<div class="row">
+  <div class="thumbnail">
+    <%= image_tag @picture.image.url %>
+
+    <div class="caption">
+      <p>
+        <%= @picture.content %>
+      </p>
+
+      <% if @picture.user.id == current_user.id %>
+        <%= link_to '編集する', edit_picture_path(@picture), class: 'btn btn-default' %>
+      <% end %>
+      <%= link_to '投稿一覧へ', pictures_path, class: 'btn btn-default' %>
+    </div>
+  </div>
+</div>
