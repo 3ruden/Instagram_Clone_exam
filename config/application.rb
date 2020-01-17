@@ -12,5 +12,8 @@ module InstagramCloneExam
       g.helper false
       g.jbuilder false
     end
+
+    config.time_zone = 'Tokyo'
+    config.active_record.default_timezone = :local
   end
 end
