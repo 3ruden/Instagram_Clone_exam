@@ -37,6 +37,8 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  # 開発環境下でメール送信内容を確認
+  gem 'letter_opener_web'
 end
 
 group :test do
