@@ -1,31 +1,29 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Users</h1>
+<h1>ユーザー一覧</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Profile image</th>
-      <th>Name</th>
-      <th>Email</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="row">
+  <% @users.each do |user| %>
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <%= image_tag user.profile_image.url %>
+        <div class="caption">
+          <p>
+            ユーザーネーム: <%= user.name %>
+          </p>
+          <p>
+            メールアドレス: <%= user.email %>
+          </p>
+          <%= link_to '詳細', user, class: "btn btn-default" %>
+          <% if user.id == current_user.id %>
+            <%= link_to '編集する', edit_user_path(user), class: "btn btn-default" %>
+            <%= link_to '削除する', user, method: :delete, data: { confirm: '本当に本当に削除しますか？' }, class: "btn btn-default" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= image_tag user.profile_image.url %></td>
-        <td><%= user.name %></td>
-        <td><%= user.email %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New User', new_user_path %>
+<%= link_to '投稿一覧へ', pictures_path %> |
+<%= link_to '新規投稿する', new_picture_path %>

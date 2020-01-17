@@ -1,24 +1,19 @@
-<p id="notice"><%= notice %></p>
+<h3><%= notice %></h3>
 
-<p>
-  <strong>Profile image:</strong>
-  <%= image_tag @user.profile_image.url %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<p>
-  <strong>Password digest:</strong>
-  <%= @user.password_digest %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<div class="row">
+  <div class="thumbnail">
+    <%= image_tag @user.profile_image.url %>
+    <div class="caption">
+      <p>
+        ユーザーネーム: <%= @user.name %>
+      </p>
+      <p>
+        メールアドレス: <%= @user.email %>
+      </p>
+      <% if @user.id == current_user.id %>
+        <%= link_to '編集する', edit_user_path(@user), class: 'btn btn-default' %>
+      <% end %>
+      <%= link_to 'ユーザー一覧へ', users_path, class: 'btn btn-default' %>
+    </div>
+  </div>
+</div>
