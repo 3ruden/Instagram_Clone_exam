@@ -14,9 +14,11 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @submit_value = 'アカウント作成'
   end
 
   def edit
+    @submit_value = 'アカウント編集'
   end
 
   def create
