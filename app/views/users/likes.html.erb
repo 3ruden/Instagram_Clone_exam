@@ -1,0 +1,21 @@
+<h1>お気に入りした投稿</h1>
+<div class="row">
+  <% @user.favorite_pictures.each do |picture| %>
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <%= image_tag picture.image.url %>
+        <div class="caption">
+          <h3>投稿者: <%= picture.user.name %></h3>
+          <p><%= picture.content %></p>
+          <%= link_to '詳細', picture, class: "btn btn-default" %>
+          <% if picture.user.id == current_user.id %>
+            <%= link_to '編集する', edit_picture_path(picture), class: "btn btn-default" %>
+            <%= link_to '削除する', picture, method: :delete, data: { confirm: '本当に本当に削除しますか？' }, class: "btn btn-default" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<%= link_to "#{@user.name}さんの詳細ページへ戻る", user_path %>
